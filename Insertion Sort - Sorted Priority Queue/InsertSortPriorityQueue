@@ -1,0 +1,25 @@
+from priority_queue_base import PriorityQueueBase
+from positional_list import PositionalList
+from sorted_priority_queue import SortedPriorityQueue
+
+
+class InsertionSort(SortedPriorityQueue):
+
+        def __init__(self):
+            self._data = PositionalList()
+            self._sorted = []
+
+        def sort(self, list):
+            # Adds elements from given list to a sorted priority queue
+            for i in list:
+                self.add(i, i)
+            # removes minimum element from priority queue to sort the list
+            for i in range(len(self._data)):
+                self._sorted.append(self.remove_min())
+
+            return self._sorted
+
+
+test = InsertionSort()
+
+print(test.sort([6,2,3,1,4]))
